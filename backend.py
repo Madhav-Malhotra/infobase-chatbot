@@ -1,6 +1,6 @@
 """BACKEND.PY
 This script finds Infobase articles that are relevant to your query
-Dependencies: `dotenv`, `langchain`, `langchain-community`, `langchain-voyageai`, `faiss-cpu`, `langchain-anthropic`, `langchain-openai
+Dependencies: `dotenv`, `langchain`, `langchain-community`, `langchain-voyageai`, `faiss-cpu`, `langchain-anthropic`
 """
 
 # Load libraries
@@ -12,10 +12,14 @@ from langchain.prompts import PromptTemplate
 from langchain_anthropic import ChatAnthropic
 from langchain_voyageai import VoyageAIEmbeddings
 from langchain_community.vectorstores import FAISS
+from langchain_community.utilities.sql_database import SQLDatabase
 
 
 
-# Load data
+# ======================================================= #
+# =================== LOAD DATA ========================= #
+# ======================================================= #
+ 
 load_dotenv(".env")
 VOYAGE_KEY = os.environ["VOYAGE_API_KEY"]
 ANTHROPIC_KEY = os.environ["ANTHROPIC_API_KEY"]
@@ -76,7 +80,11 @@ def load_llm(key: str, french : bool = False) -> ChatAnthropic:
                         max_tokens=512, api_key=key)
     
     return prompt | llm
-    
+
+
+# ======================================================= #
+# ================== SEARCH FUNCTIONS =================== #
+# ======================================================= #
 
 # Run search
 def find_extracts(query: str, db: FAISS, k: int=4) -> list:
