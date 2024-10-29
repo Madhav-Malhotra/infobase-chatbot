@@ -2,7 +2,7 @@
 
 An AI assistant to quickly be directed to articles and answer public health questions on the [Public Health Infobase site](https://health-infobase.canada.ca). The assistant is powered by [Langchain (notes)](https://docs.google.com/document/d/1D9kfjytOPmmVor2TjIY-LiUrCvEWILbXci5rqbgR84w/edit).
 
-![Infobase chatbot preview](./ChatbotPreview.png)
+![Infobase chatbot visual overview](./ChatbotPreview.png)
 
 ### Directories
 - `./` contains the python files for a streamlit demo frontend, a Flask API backend, a script to create the vectorstore, and a script to initialise the models.
